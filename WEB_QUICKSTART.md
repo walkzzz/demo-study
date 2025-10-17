@@ -16,7 +16,7 @@
 python src/api/main.py
 ```
 
-服务启动后，打开浏览器访问：**http://localhost:8000**
+服务启动后，打开浏览器访问：**http://127.0.0.1:8000**
 
 ---
 
@@ -171,10 +171,10 @@ python src/api/main.py
 **A**: 检查后端服务是否启动
 ```bash
 # 测试连接
-curl http://localhost:8000/health
+curl http://127.0.0.1:8000/health
 
 # 或在浏览器访问
-http://localhost:8000/health
+http://127.0.0.1:8000/health
 ```
 
 ### Q2: 发送消息后无响应？
@@ -240,7 +240,7 @@ python verify_config.py
 ## 📚 延伸阅读
 
 - [Web 界面详细文档](web/README.md)
-- [API 文档](http://localhost:8000/docs)
+- [API 文档](http://127.0.0.1:8000/docs)
 - [系统架构](ARCHITECTURE.md)
 - [快速开始](QUICKSTART.md)
 
@@ -255,7 +255,7 @@ python verify_config.py
 
 2. **打开浏览器**
    ```
-   http://localhost:8000
+   http://127.0.0.1:8000
    ```
 
 3. **开始对话**

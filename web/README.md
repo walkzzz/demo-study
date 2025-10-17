@@ -48,22 +48,22 @@
 python src/api/main.py
 
 # 方式2: 使用 uvicorn
-uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn src.api.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 服务启动后，您会看到：
 ```
-🚀 启动API服务: http://0.0.0.0:8000
-📖 API文档: http://0.0.0.0:8000/docs
+🚀 启动API服务: http://127.0.0.1:8000
+📖 API文档: http://127.0.0.1:8000/docs
 ```
 
 ### 2. 访问 Web 界面
 
 打开浏览器，访问以下任一地址：
 
-- **主界面**: http://localhost:8000
-- **静态文件**: http://localhost:8000/static/index.html
-- **API 文档**: http://localhost:8000/docs
+- **主界面**: http://127.0.0.1:8000
+- **静态文件**: http://127.0.0.1:8000/static/index.html
+- **API 文档**: http://127.0.0.1:8000/docs
 
 ### 3. 开始使用
 

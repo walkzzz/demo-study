@@ -226,7 +226,7 @@ async def root():
 ```
 1. 启动后端服务
    ↓
-2. 打开浏览器访问 http://localhost:8000
+2. 打开浏览器访问 http://127.0.0.1:8000
    ↓
 3. 检查连接状态（右上角）
    ↓
@@ -408,8 +408,8 @@ const API_BASE_URL = 'http://your-server:port';
 - [QUICKSTART.md](QUICKSTART.md) - CLI快速开始
 
 ### API 文档
-- http://localhost:8000/docs - FastAPI 自动文档
-- http://localhost:8000/redoc - ReDoc 格式
+- http://127.0.0.1:8000/docs - FastAPI 自动文档
+- http://127.0.0.1:8000/redoc - ReDoc 格式
 
 ---
 

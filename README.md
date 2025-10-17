@@ -120,7 +120,7 @@ ollama pull qwen:7b
 # 或直接运行
 python src/api/main.py
 ```
-然后打开浏览器访问: **http://localhost:8000**
+然后打开浏览器访问: **http://127.0.0.1:8000**
 
 **命令行模式**:
 ```bash
@@ -130,7 +130,7 @@ python src/cli/main.py
 **API服务模式**:
 ```bash
 python src/api/main.py
-# API文档: http://localhost:8000/docs
+# API文档: http://127.0.0.1:8000/docs
 ```
 
 ## 学习示例

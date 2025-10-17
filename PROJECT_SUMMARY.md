@@ -164,7 +164,7 @@ python src/cli/main.py
 python src/api/main.py
 
 # 调用API
-curl -X POST http://localhost:8000/api/task \
+curl -X POST http://127.0.0.1:8000/api/task \
   -H "Content-Type: application/json" \
   -d '{"user_input": "分析本月销售数据"}'
 ```

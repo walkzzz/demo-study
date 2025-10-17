@@ -68,7 +68,7 @@ python src/cli/main.py
 python src/api/main.py
 ```
 
-API文档访问: http://localhost:8000/docs
+API文档访问: http://127.0.0.1:8000/docs
 
 ## 使用示例
 
@@ -89,7 +89,7 @@ API文档访问: http://localhost:8000/docs
 ### API调用
 
 ```bash
-curl -X POST http://localhost:8000/api/task \
+curl -X POST http://127.0.0.1:8000/api/task \
   -H "Content-Type: application/json" \
   -d '{"user_input": "分析本月销售数据"}'
 ```
@@ -111,7 +111,7 @@ docker-compose down
 
 ### 服务访问
 
-- API服务: http://localhost:8000
+- API服务: http://127.0.0.1:8000
 - Ollama: http://localhost:11434
 - ChromaDB: http://localhost:8001
 

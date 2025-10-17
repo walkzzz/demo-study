@@ -165,10 +165,10 @@ if __name__ == "__main__":
         with open("config/config.yaml", 'r', encoding='utf-8') as f:
             config = yaml.safe_load(f)
             api_config = config.get('api', {})
-            host = api_config.get('host', '0.0.0.0')
+            host = api_config.get('host', '127.0.0.1')
             port = api_config.get('port', 8000)
     except:
-        host = '0.0.0.0'
+        host = '127.0.0.1'
         port = 8000
     
     print(f"\n🚀 启动API服务: http://{host}:{port}")

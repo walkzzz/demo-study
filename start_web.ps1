@@ -76,9 +76,9 @@ Write-Host "  启动 API 服务..." -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "服务地址:" -ForegroundColor Green
-Write-Host "  🌐 Web 界面: http://localhost:8000" -ForegroundColor White
-Write-Host "  📖 API 文档: http://localhost:8000/docs" -ForegroundColor White
-Write-Host "  🔧 健康检查: http://localhost:8000/health" -ForegroundColor White
+Write-Host "  🌐 Web 界面: http://127.0.0.1:8000" -ForegroundColor White
+Write-Host "  📖 API 文档: http://127.0.0.1:8000/docs" -ForegroundColor White
+Write-Host "  🔧 健康检查: http://127.0.0.1:8000/health" -ForegroundColor White
 Write-Host ""
 Write-Host "按 Ctrl+C 停止服务" -ForegroundColor Yellow
 Write-Host ""
