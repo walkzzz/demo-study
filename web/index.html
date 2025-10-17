@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常办公超级智能体 - AI 助手</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>日常办公超级智能体</h1>
+            </div>
+            <div class="status-indicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">连接中...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-container">
+        <div class="container">
+            <div class="content-grid">
+                <!-- 左侧边栏 -->
+                <aside class="sidebar">
+                    <!-- 智能体列表 -->
+                    <div class="card">
+                        <h3><i class="fas fa-users"></i> 可用智能体</h3>
+                        <div id="agentsList" class="agents-list">
+                            <div class="loading">加载中...</div>
+                        </div>
+                    </div>
+
+                    <!-- 系统状态 -->
+                    <div class="card">
+                        <h3><i class="fas fa-chart-line"></i> 系统状态</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-label">记忆总数</span>
+                                <span class="stat-value" id="memoryCount">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">向量数据</span>
+                                <span class="stat-value" id="vectorCount">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 快捷操作 -->
+                    <div class="card">
+                        <h3><i class="fas fa-bolt"></i> 快捷操作</h3>
+                        <div class="quick-actions">
+                            <button class="quick-btn" onclick="sendQuickTask('帮我整理今天的邮件')">
+                                <i class="fas fa-envelope"></i> 整理邮件
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickTask('分析最近的数据')">
+                                <i class="fas fa-chart-bar"></i> 数据分析
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickTask('查看今天的日程安排')">
+                                <i class="fas fa-calendar"></i> 查看日程
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickTask('整理下载文件夹')">
+                                <i class="fas fa-folder"></i> 整理文件
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- 主聊天区域 -->
+                <section class="chat-section">
+                    <div class="card chat-card">
+                        <!-- 聊天标题 -->
+                        <div class="chat-header">
+                            <h2><i class="fas fa-comments"></i> AI 对话助手</h2>
+                            <button class="clear-btn" onclick="clearChat()">
+                                <i class="fas fa-trash"></i> 清空对话
+                            </button>
+                        </div>
+
+                        <!-- 聊天消息区域 -->
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="welcome-message">
+                                <i class="fas fa-robot robot-icon"></i>
+                                <h3>欢迎使用日常办公超级智能体！</h3>
+                                <p>我可以帮您处理以下任务：</p>
+                                <ul>
+                                    <li>📧 邮件管理 - 自动分类、回复、归档</li>
+                                    <li>📄 文档处理 - 格式转换、摘要提取、对比</li>
+                                    <li>📅 日程管理 - 会议安排、提醒、冲突检测</li>
+                                    <li>📊 数据分析 - 数据处理、可视化、报表生成</li>
+                                    <li>💡 知识问答 - 基于知识库的智能问答</li>
+                                    <li>📁 文件管理 - 智能整理、重复检测、空间优化</li>
+                                </ul>
+                                <p>请输入您的需求，我会帮您处理！</p>
+                            </div>
+                        </div>
+
+                        <!-- 输入区域 -->
+                        <div class="chat-input-area">
+                            <div class="input-wrapper">
+                                <textarea 
+                                    id="userInput" 
+                                    placeholder="输入您的需求，例如：帮我整理今天的邮件..." 
+                                    rows="1"
+                                    onkeydown="handleKeyDown(event)"
+                                ></textarea>
+                                <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class="input-hint">
+                                <i class="fas fa-info-circle"></i> 
+                                按 Enter 发送，Shift+Enter 换行
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <i class="fas fa-shield-alt"></i> 
+                本地部署，数据不出本地 | 
+                基于 LangChain + Ollama 构建
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -10,6 +10,8 @@ sys.path.insert(0, str(project_root))
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import logging
 
@@ -37,6 +39,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# 挂载静态文件目录
+web_dir = project_root / "web"
+if web_dir.exists():
+    app.mount("/static", StaticFiles(directory=str(web_dir)), name="static")
 
 # 全局变量
 agent_cli: Optional[OfficeSuperAgentCLI] = None
@@ -71,12 +78,18 @@ async def startup_event():
 
 @app.get("/")
 async def root():
-    """根路径"""
-    return {
-        "message": "日常办公超级智能体API",
-        "version": "0.1.0",
-        "status": "running"
-    }
+    """根路径 - 返回Web界面"""
+    web_index = project_root / "web" / "index.html"
+    if web_index.exists():
+        return FileResponse(str(web_index))
+    else:
+        return {
+            "message": "日常办公超级智能体API",
+            "version": "0.2.1",
+            "status": "running",
+            "docs": "/docs",
+            "web_ui": "Web界面文件未找到，请检查 web/ 目录"
+        }
 
 
 @app.get("/health")

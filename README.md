@@ -16,6 +16,7 @@
 - **智能协作**: 通过 LangGraph 实现多智能体协作决策
 - **可扩展性**: 基于插件化架构，支持快速添加新功能
 - **自主决策**: 智能体具备任务分解、工具选择和执行反思能力
+- **Web 界面**: 现代化的前端交互页面 ⭐ **新增**
 
 ## 支持的办公场景
 
@@ -111,14 +112,25 @@ ollama pull qwen:7b
 
 4. 启动应用
 
-命令行模式:
+**Web 界面模式** (推荐 ⭐):
+```bash
+# Windows PowerShell
+.\start_web.ps1
+
+# 或直接运行
+python src/api/main.py
+```
+然后打开浏览器访问: **http://localhost:8000**
+
+**命令行模式**:
 ```bash
 python src/cli/main.py
 ```
 
-API服务模式:
+**API服务模式**:
 ```bash
 python src/api/main.py
+# API文档: http://localhost:8000/docs
 ```
 
 ## 学习示例
@@ -167,6 +179,7 @@ python examples/06_data_agent.py
 
 #### 快速上手
 - [QUICKSTART.md](QUICKSTART.md) - 快速开始指南
+- [WEB_QUICKSTART.md](WEB_QUICKSTART.md) - Web 界面快速开始 ⭐ **新增**
 - [examples/](examples/) - 完整示例集合
   - [examples/README.md](examples/README.md) - 示例导航
   - [examples/TEST_REPORT.md](examples/TEST_REPORT.md) - 示例测试报告
