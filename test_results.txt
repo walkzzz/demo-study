@@ -1,0 +1,32 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.8, pytest-7.4.3, pluggy-1.0.0 -- C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\python.exe
+cachedir: .pytest_cache
+rootdir: D:\workspace\Qoder\study
+plugins: anyio-4.10.0, langsmith-0.4.31, typeguard-2.12.1
+collecting ... collected 17 items
+
+tests/test_examples.py::TestExamples::test_examples_directory_exists PASSED [  5%]
+tests/test_examples.py::TestExamples::test_example_files_exist PASSED    [ 11%]
+tests/test_examples.py::TestExamples::test_readme_exists PASSED          [ 17%]
+tests/test_examples.py::TestExamples::test_example_execution[01_basic_usage.py] PASSED [ 23%]
+tests/test_examples.py::TestExamples::test_example_execution[05_email_agent.py] PASSED [ 29%]
+tests/test_examples.py::TestExamples::test_example_execution[06_data_agent.py] PASSED [ 35%]
+tests/test_examples.py::TestExamples::test_example_execution[10_custom_tools.py] PASSED [ 41%]
+tests/test_examples.py::TestExamples::test_example_imports PASSED        [ 47%]
+tests/test_examples.py::TestExamples::test_example_docstrings PASSED     [ 52%]
+tests/test_examples.py::TestExamples::test_example_main_function PASSED  [ 58%]
+tests/test_examples.py::TestExampleContent::test_examples_have_chinese_comments PASSED [ 64%]
+tests/test_examples.py::TestExampleContent::test_examples_have_print_output PASSED [ 70%]
+tests/test_examples.py::TestExampleContent::test_examples_file_size PASSED [ 76%]
+tests/test_examples.py::TestDocumentation::test_summary_document_exists PASSED [ 82%]
+tests/test_examples.py::TestDocumentation::test_final_report_exists PASSED [ 88%]
+tests/test_examples.py::TestDocumentation::test_documentation_completeness PASSED [ 94%]
+tests/test_examples.py::TestExampleIntegration::test_run_basic_examples_sequence PASSED [100%]
+
+============================== warnings summary ===============================
+tests\test_examples.py:230
+  D:\workspace\Qoder\study\tests\test_examples.py:230: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 17 passed, 1 warning in 22.09s ========================

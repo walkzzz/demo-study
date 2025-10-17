@@ -60,7 +60,7 @@
 
 - **SuperAgent**: 超级智能体协调器
 - **TaskPlanner**: 任务规划和分解
-- **StateManager**: 状态流转管理
+- **StateManager**: 状态流转管理 ([使用指南](docs/STATE_MANAGER_GUIDE.md))
 
 ### 3. 专业智能体层 (src/agents)
 

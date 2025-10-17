@@ -27,6 +27,7 @@ def demo_file_system_tools():
     
     # 演示1: 扫描当前目录
     print("\n1️⃣ 扫描当前目录...")
+    result = None
     try:
         result = tools.scan_directory(".", max_depth=1, file_types=['.py', '.md', '.yaml', '.json'])
         print(f"   ✅ 找到 {result['total_files']} 个文件")
@@ -40,11 +41,14 @@ def demo_file_system_tools():
     # 演示2: 文件分类
     print("\n2️⃣ 文件智能分类...")
     try:
-        files = result['files'][:10]  # 取前10个文件演示
-        classified = tools.classify_files(files)
-        print(f"   ✅ 分类完成")
-        for category, file_list in classified.items():
-            print(f"      {category}: {len(file_list)}个")
+        if result is not None and 'files' in result:
+            files = result['files'][:10]  # 取前10个文件演示
+            classified = tools.classify_files(files)
+            print(f"   ✅ 分类完成")
+            for category, file_list in classified.items():
+                print(f"      {category}: {len(file_list)}个")
+        else:
+            print(f"   ⚠️  跳过: 无可用文件数据")
     except Exception as e:
         print(f"   ❌ 错误: {e}")
     
@@ -124,10 +128,15 @@ def demo_configuration():
     print("⚙️  配置系统演示")
     print("="*60)
     
+    try:
+        import yaml
+    except ImportError:
+        print("   ❌ 错误: yaml模块未安装，请运行: pip install pyyaml")
+        return
+    
     # 演示1: 主配置
     print("\n1️⃣ 主配置 (config/config.yaml)")
     try:
-        import yaml
         with open("config/config.yaml", 'r', encoding='utf-8') as f:
             config = yaml.safe_load(f)
         print(f"   ✅ Ollama地址: {config['ollama']['base_url']}")

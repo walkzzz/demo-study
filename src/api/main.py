@@ -2,7 +2,7 @@
 
 import sys
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 # 添加项目根目录到Python路径
 project_root = Path(__file__).parent.parent.parent
@@ -39,7 +39,7 @@ app.add_middleware(
 )
 
 # 全局变量
-agent_cli = None
+agent_cli: Optional[OfficeSuperAgentCLI] = None
 
 
 class TaskRequest(BaseModel):
@@ -95,6 +95,9 @@ async def process_task(request: TaskRequest):
     Returns:
         任务响应
     """
+    if agent_cli is None:
+        raise HTTPException(status_code=503, detail="服务未初始化")
+    
     try:
         logger.info(f"接收到任务: {request.user_input[:50]}...")
         
@@ -110,6 +113,9 @@ async def process_task(request: TaskRequest):
 @app.get("/api/agents")
 async def get_agents():
     """获取可用的智能体列表"""
+    if agent_cli is None:
+        raise HTTPException(status_code=503, detail="服务未初始化")
+    
     agents = list(agent_cli.agents.keys())
     return {
         "agents": agents,
@@ -120,6 +126,9 @@ async def get_agents():
 @app.get("/api/memory/stats")
 async def get_memory_stats():
     """获取记忆统计"""
+    if agent_cli is None:
+        raise HTTPException(status_code=503, detail="服务未初始化")
+    
     stats = agent_cli.memory_manager.get_memory_stats()
     return stats
 
@@ -127,6 +136,9 @@ async def get_memory_stats():
 @app.get("/api/vector_db/stats")
 async def get_vector_db_stats():
     """获取向量数据库统计"""
+    if agent_cli is None:
+        raise HTTPException(status_code=503, detail="服务未初始化")
+    
     stats = agent_cli.vector_db.get_collection_stats()
     return stats
 

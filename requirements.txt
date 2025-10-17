@@ -20,9 +20,7 @@ seaborn>=0.13.0
 plotly>=5.18.0
 
 # 邮件处理
-imaplib2>=3.6
-python-email>=0.2.0
-smtplib>=0.0.1
+# imaplib 和 smtplib 是 Python 标准库，无需安装
 
 # 日历处理
 icalendar>=5.0.11
