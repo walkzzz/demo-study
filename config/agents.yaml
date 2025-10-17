@@ -1,0 +1,107 @@
+# 专业智能体配置
+
+agents:
+  # 邮件智能体
+  email_agent:
+    name: "EmailAgent"
+    description: "负责邮件自动分类、回复建议生成、批量处理和归档"
+    model_name: "mistral:7b"
+    temperature: 0.7
+    max_iterations: 10
+    tools:
+      - "read_emails"
+      - "classify_email"
+      - "draft_reply"
+      - "send_email"
+      - "archive_emails"
+    memory_enabled: true
+    reflection_enabled: true
+    
+  # 文档智能体
+  doc_agent:
+    name: "DocAgent"
+    description: "负责文档格式转换、摘要提取、内容对比和模板生成"
+    model_name: "qwen:7b"
+    temperature: 0.5
+    max_iterations: 10
+    tools:
+      - "load_document"
+      - "convert_format"
+      - "extract_summary"
+      - "extract_entities"
+      - "fill_template"
+      - "compare_documents"
+    memory_enabled: true
+    reflection_enabled: true
+    
+  # 日程智能体
+  schedule_agent:
+    name: "ScheduleAgent"
+    description: "负责会议安排、冲突检测、时间规划和会议纪要生成"
+    model_name: "llama3:8b"
+    temperature: 0.3
+    max_iterations: 10
+    tools:
+      - "get_schedule"
+      - "check_conflict"
+      - "create_event"
+      - "update_event"
+      - "suggest_time"
+      - "generate_minutes"
+    memory_enabled: true
+    reflection_enabled: true
+    
+  # 数据分析智能体
+  data_agent:
+    name: "DataAgent"
+    description: "负责Excel/CSV数据处理、可视化、统计分析和报表生成"
+    model_name: "llama3:8b"
+    temperature: 0.1
+    max_iterations: 10
+    tools:
+      - "load_data"
+      - "analyze_data"
+      - "filter_data"
+      - "aggregate_data"
+      - "visualize_data"
+      - "generate_report"
+    memory_enabled: true
+    reflection_enabled: true
+    
+  # 知识问答智能体
+  knowledge_agent:
+    name: "KnowledgeAgent"
+    description: "基于本地知识库的问答、文档检索和知识图谱查询"
+    model_name: "qwen:7b"
+    temperature: 0.2
+    max_iterations: 10
+    tools:
+      - "semantic_search"
+      - "qa_with_context"
+      - "index_document"
+      - "update_knowledge"
+      - "query_graph"
+    memory_enabled: true
+    reflection_enabled: true
+    
+  # 文件系统管理智能体
+  file_agent:
+    name: "FileAgent"
+    description: "负责文件智能分类、重复检测、批量操作和空间分析"
+    model_name: "llama3:8b"
+    temperature: 0.3
+    max_iterations: 10
+    tools:
+      - "scan_directory"
+      - "classify_files"
+      - "detect_duplicates"
+      - "batch_rename"
+      - "batch_move"
+      - "organize_files"
+      - "search_files"
+      - "analyze_storage"
+      - "clean_temp_files"
+      - "compress_files"
+      - "extract_archive"
+    memory_enabled: true
+    reflection_enabled: true

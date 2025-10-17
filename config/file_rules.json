@@ -1,0 +1,123 @@
+{
+  "file_classification_rules": {
+    "Documents": {
+      "extensions": [".docx", ".doc", ".pdf", ".txt", ".md", ".rtf", ".odt"],
+      "description": "文档文件"
+    },
+    "Images": {
+      "extensions": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".ico", ".webp"],
+      "description": "图片文件"
+    },
+    "Videos": {
+      "extensions": [".mp4", ".avi", ".mkv", ".mov", ".wmv", ".flv", ".webm"],
+      "description": "视频文件"
+    },
+    "Music": {
+      "extensions": [".mp3", ".wav", ".flac", ".aac", ".ogg", ".m4a", ".wma"],
+      "description": "音频文件"
+    },
+    "Archives": {
+      "extensions": [".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz"],
+      "description": "压缩包文件"
+    },
+    "Spreadsheets": {
+      "extensions": [".xlsx", ".xls", ".csv", ".ods"],
+      "description": "表格文件"
+    },
+    "Presentations": {
+      "extensions": [".pptx", ".ppt", ".key", ".odp"],
+      "description": "演示文稿文件"
+    },
+    "Code": {
+      "extensions": [".py", ".js", ".java", ".cpp", ".c", ".h", ".cs", ".go", ".rs", ".php", ".rb", ".swift"],
+      "description": "代码文件"
+    },
+    "Installers": {
+      "extensions": [".exe", ".msi", ".dmg", ".pkg", ".deb", ".rpm", ".apk"],
+      "description": "安装包文件"
+    },
+    "Ebooks": {
+      "extensions": [".epub", ".mobi", ".azw", ".azw3"],
+      "description": "电子书文件"
+    }
+  },
+  
+  "organize_strategies": {
+    "by_type": {
+      "name": "按文件类型整理",
+      "description": "根据文件扩展名分类到不同文件夹",
+      "applicable_scenarios": ["下载文件夹整理", "混乱目录清理"]
+    },
+    "by_date": {
+      "name": "按创建时间整理",
+      "description": "按年/月创建子文件夹归档",
+      "applicable_scenarios": ["照片归档", "日志归档"],
+      "date_format": "YYYY/MM"
+    },
+    "by_project": {
+      "name": "按项目整理",
+      "description": "根据文件名关键词识别项目",
+      "applicable_scenarios": ["工作文档整理"],
+      "keyword_detection": true
+    },
+    "by_size": {
+      "name": "按文件大小整理",
+      "description": "分为小型/中型/大型文件",
+      "applicable_scenarios": ["磁盘空间优化"],
+      "size_ranges": {
+        "small": "< 10MB",
+        "medium": "10MB - 100MB",
+        "large": "> 100MB"
+      }
+    }
+  },
+  
+  "duplicate_detection_methods": {
+    "hash": {
+      "name": "MD5哈希比对",
+      "accuracy": "高",
+      "performance": "中",
+      "description": "通过文件内容的MD5值精确检测重复"
+    },
+    "name": {
+      "name": "文件名比对",
+      "accuracy": "低",
+      "performance": "快",
+      "description": "仅比较文件名，用于快速粗筛"
+    },
+    "size": {
+      "name": "文件大小比对",
+      "accuracy": "中",
+      "performance": "快",
+      "description": "比较文件大小，用于初步过滤"
+    },
+    "combined": {
+      "name": "组合策略",
+      "accuracy": "高",
+      "performance": "中",
+      "description": "先比较大小，再计算哈希值",
+      "recommended": true
+    }
+  },
+  
+  "temp_file_cleanup_rules": {
+    "patterns": [
+      "*.tmp",
+      "*.temp",
+      "*.cache",
+      "~$*",
+      ".DS_Store",
+      "Thumbs.db",
+      "desktop.ini"
+    ],
+    "safe_age_days": 7,
+    "description": "删除7天前的临时文件"
+  },
+  
+  "backup_rules": {
+    "enabled": true,
+    "backup_before_delete": true,
+    "backup_retention_days": 30,
+    "max_backup_size_gb": 10
+  }
+}

@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # Ollama 服务
+  ollama:
+    image: ollama/ollama:latest
+    container_name: office-agent-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    networks:
+      - office-agent-network
+    restart: unless-stopped
+  
+  # ChromaDB 服务
+  chromadb:
+    image: ghcr.io/chroma-core/chroma:latest
+    container_name: office-agent-chromadb
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+    networks:
+      - office-agent-network
+    restart: unless-stopped
+  
+  # 应用服务
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: office-agent-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config:/app/config:ro
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+    depends_on:
+      - ollama
+      - chromadb
+    networks:
+      - office-agent-network
+    restart: unless-stopped
+    command: python src/api/main.py
+
+volumes:
+  ollama_data:
+  chroma_data:
+
+networks:
+  office-agent-network:
+    driver: bridge
